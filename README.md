@@ -24,6 +24,11 @@ embedding into another source tree. Some reasons to do this are outlined in
 [nothings/single\_file\_libs][sfl]
 and ["SQLite is really easy to compile"][je].
 
+The requirements are:
+
+- Python 3.7 or greater. If you need 3.6 compatibility see the `py3.6_compat`
+  branch.
+
 [sfl]: https://github.com/nothings/single_file_libs/#single-file-public-domainopen-source-libraries-with-minimal-dependencies
 [je]: https://jvns.ca/blog/2019/10/28/sqlite-is-really-easy-to-compile/
 [csh]: https://github.com/facebook/zstd/blob/69b8361b0c92b0f2cc145eea17b7ff930166ea9d/contrib/single_file_libs/combine.sh
