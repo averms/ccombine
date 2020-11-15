@@ -32,13 +32,20 @@ class Options:
 
 def main() -> None:
     parser = ap.ArgumentParser(
-        description="Bundles a C/C++ source file, recursively inlining any local includes.",
+        description=(
+            "Processes a C/C++ source file, recursively inlining any local includes."
+        ),
         allow_abbrev=False,
         add_help=False,
     )
     parser.add_argument("input_file", action="store", type=Path)
     parser.add_argument(
-        "-r", "--root", action="append", type=Path, help="Root search path.", default=[]
+        "-r",
+        "--root",
+        action="append",
+        type=Path,
+        help="Include search path, can be repeated.",
+        default=[],
     )
     parser.add_argument(
         "-x",
