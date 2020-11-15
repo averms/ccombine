@@ -1,3 +1,6 @@
 /.vscode/
 /venv/
 /combine.sh
+
+__pycache__/
+*.pyz

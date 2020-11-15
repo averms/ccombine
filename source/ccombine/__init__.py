@@ -158,4 +158,5 @@ def warn(msg: Any) -> None:
     print("WARNING:", msg, file=sys.stderr)
 
 
-main()
+if __name__ == "__main__":
+    main()
