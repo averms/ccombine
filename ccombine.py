@@ -76,6 +76,13 @@ def main() -> None:
         default=ap.SUPPRESS,
         help="Show this help message and exit.",
     )
+    parser.add_argument(
+        "-V",
+        "--version",
+        action="version",
+        version="%(prog)s " + __version__,
+        help="Show program's version number and exit.",
+    )
 
     args = parser.parse_args()
     opts = Options(
