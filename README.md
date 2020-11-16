@@ -21,14 +21,15 @@ better command-line interface.
 
 It can be used to create an amalgamated distribution of your library for easy
 embedding into another source tree. Some reasons to do this are outlined in
-[nothings/single\_file\_libs][sfl]
-and ["SQLite is really easy to compile"][je].
+[nothings/stb][sfl] and ["SQLite is really easy to compile"][je].
 
-The requirements are:
+You can install it by cloning and running `pip install .`. This will install a
+script called `ccombine` into your Python environment. Alternatively, you can
+simply run `source/ccombine/__init__.py` without installing anything. The only
+requirement is the Python 3.7 standard library.
 
-- Python 3.7 or greater. If you need 3.6 compatibility see the `py3.6_compat`
-  branch.
+If you need 3.6 compatibility see the `py3.6_compat` branch.
 
-[sfl]: https://github.com/nothings/single_file_libs/#single-file-public-domainopen-source-libraries-with-minimal-dependencies
+[sfl]: https://github.com/nothings/stb#why-single-file-headers
 [je]: https://jvns.ca/blog/2019/10/28/sqlite-is-really-easy-to-compile/
 [csh]: https://github.com/facebook/zstd/blob/69b8361b0c92b0f2cc145eea17b7ff930166ea9d/contrib/single_file_libs/combine.sh
