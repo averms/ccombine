@@ -28,7 +28,7 @@ script called `ccombine` into your Python environment. Alternatively, you can
 simply run `source/ccombine/__init__.py` without installing anything. The only
 requirement is the Python 3.7 standard library.
 
-If you need 3.6 compatibility see the `py3.6_compat` branch.
+If you need 3.6 compatibility see the `python3.6-compat` branch.
 
 [sfl]: https://github.com/nothings/stb#why-single-file-headers
 [je]: https://jvns.ca/blog/2019/10/28/sqlite-is-really-easy-to-compile/
