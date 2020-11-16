@@ -16,20 +16,11 @@
 import argparse as ap
 import re
 import sys
-from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Iterable, List, Set
 
 __version__ = "0.2.0"
-
-
-@dataclass
-class Options:
-    input_file: Path
-    root: List[Path]
-    exclude: Set[str]
-    keep: Set[str]
-    include_pragma_once: bool = False
+Options = ap.Namespace
 
 
 def main(arguments: List[str]) -> None:
@@ -84,14 +75,12 @@ def main(arguments: List[str]) -> None:
     )
 
     args = parser.parse_args(arguments)
-    opts = Options(
-        input_file=args.input_file,
-        root=[p.resolve(strict=True) for p in args.root],
-        exclude=set(args.exclude),
-        keep=set(args.keep),
-        include_pragma_once=args.include_pragma_once,
-    )
-    process(opts)
+
+    args.root = [p.resolve(strict=True) for p in args.root]
+    args.exclude = set(args.exclude)
+    args.keep = set(args.keep)
+
+    process(args)
 
 
 def process(opts: Options) -> None:
