@@ -37,7 +37,6 @@ def main() -> None:
         description=(
             "Processes a C/C++ source file, recursively inlining any local includes."
         ),
-        allow_abbrev=False,
         add_help=False,
     )
     parser.add_argument("input_file", action="store", type=Path)
