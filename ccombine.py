@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# © 2020 Aman Verma <https://aman.raoverma.com>
+# © 2020 Aman Verma <https://aman.raoverma.com/contact.html>
 #
 # Permission to use, copy, modify, and/or distribute this software for any purpose
 # with or without fee is hereby granted.
