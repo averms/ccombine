@@ -1,4 +1,5 @@
-#!/bin/sh -e
+#!/bin/sh
+set -e
 
 # Tool to bundle multiple C/C++ source files, inlining any includes.
 # 
@@ -78,24 +79,25 @@ log_line() {
 resolve_include() {
   local srcdir=$1
   local inc=$2
+  local relpath
   for root in $srcdir $ROOTS; do
     if [ -f "$root/$inc" ]; then
       # Try to reduce the file path into a canonical form (so that multiple)
       # includes of the same file are successfully deduplicated, even if they
       # are expressed differently.
-      local relpath="$(realpath --relative-to . "$root/$inc" 2>/dev/null)"
-      if [ "$relpath" != "" ]; then # not all realpaths support --relative-to
+      relpath="$(realpath --relative-to . "$root/$inc" 2>/dev/null)"
+      if [ $? -eq 0 ]; then # not all realpaths support --relative-to
         echo "$relpath"
         return 0
       fi
-      local relpath="$(realpath "$root/$inc" 2>/dev/null)"
-      if [ "$relpath" != "" ]; then # not all distros have realpath...
+      relpath="$(realpath "$root/$inc" 2>/dev/null)"
+      if [ $? -eq 0 ]; then # not all distros have realpath...
         echo "$relpath"
         return 0
       fi
       # Fallback on Python to reduce the path if the above fails.
-      local relpath=$(python -c "import os,sys; print os.path.relpath(sys.argv[1])" "$root/$inc" 2>/dev/null)
-      if [ "$relpath" != "" ]; then # not all distros have realpath...
+      relpath=$(python3 -c "import os,sys; print(os.path.relpath(sys.argv[1]))" "$root/$inc" 2>/dev/null)
+      if [ $? -eq 0 ]; then # not all distros have python...
         echo "$relpath"
         return 0
       fi
