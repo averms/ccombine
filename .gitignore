@@ -1,6 +1,8 @@
 /.vscode/
 /venv/
-/combine.sh
+
+/benchmark/*.tar.zst
+/benchmark/zstd-*
 
 __pycache__/
 *.pyz
