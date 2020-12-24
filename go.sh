@@ -3,7 +3,8 @@ set -euo pipefail
 shopt -s inherit_errexit
 
 lint() {
-    flake8 ccombine.py
+    flake8 source/ccombine.py
+    mypy --strict source/ccombine.py
 }
 
 tar() {
