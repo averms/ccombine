@@ -28,7 +28,8 @@ script called `ccombine` into your Python environment. Alternatively, you can
 simply download [`ccombine.py`][ccom]. The only requirement is Python 3.7 and
 its standard library.
 
-If you need 3.6 compatibility see the python36-compat branch.
+If you need 3.6 compatibility see the python36-compat branch. Note that it is
+often rebased and force-pushed.
 
 [sfl]: https://github.com/nothings/stb#why-single-file-headers
 [je]: https://jvns.ca/blog/2019/10/28/sqlite-is-really-easy-to-compile/
