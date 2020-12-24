@@ -121,33 +121,33 @@ def process_line(
     line: str, working_dir: Path, already_included: Set[Path], opts: Options
 ) -> None:
     match_inc = re_inc_local.match(line)
-
     if match_inc is None:
-        # Just pass the line through if it doesn't have #pragma once or if the user gave
-        # the option to keep it
         if re_pragma_once.match(line) is None or opts.include_pragma_once:
             print(line)
-        # Otherwise don't print anything.
         return
 
     inc = match_inc.group(1)
     if inc in opts.exclude:
         print(f"#error Using excluded file {inc}")
         warn(f"Using excluded file {inc}. #error directive inserted.")
-    else:
-        resolved_inc = resolve_include((working_dir, *opts.root), inc)
-        if resolved_inc in already_included:
-            print(f"/* === skipping file {inc} === */")
-        else:
-            already_included.add(resolved_inc)
-            if inc in opts.keep:
-                log(f"Not inlining {inc}")
-                print(f"/* === not inlining {inc} === */\n{line}")
-            else:
-                print(f"/* === start inlining {inc} === */")
-                log(f"Inlining {inc}")
-                process_file(resolved_inc, already_included, opts)
-                print(f"/* === end inlining {inc} === */")
+        return
+
+    resolved_inc = resolve_include((working_dir, *opts.root), inc)
+    if resolved_inc in already_included:
+        print(f"/* === skipping file {inc} === */")
+        return
+
+    already_included.add(resolved_inc)
+    if inc in opts.keep:
+        log(f"Not inlining {inc}")
+        print(f"/* === not inlining {inc} === */")
+        print(line)
+        return
+
+    print(f"/* === start inlining {inc} === */")
+    log(f"Inlining {inc}")
+    process_file(resolved_inc, already_included, opts)
+    print(f"/* === end inlining {inc} === */")
 
 
 def resolve_include(dirs: Iterable[Path], filename: str) -> Path:
