@@ -32,7 +32,7 @@ class Options:
     include_pragma_once: bool = False
 
 
-def main() -> None:
+def main(arguments: List[str] = sys.argv[1:]) -> None:
     parser = ap.ArgumentParser(
         description=(
             "Processes a C/C++ source file, recursively inlining any local includes."
@@ -83,7 +83,7 @@ def main() -> None:
         help="Show program's version number and exit.",
     )
 
-    args = parser.parse_args()
+    args = parser.parse_args(arguments)
     opts = Options(
         input_file=args.input_file,
         root=[p.resolve(strict=True) for p in args.root],
