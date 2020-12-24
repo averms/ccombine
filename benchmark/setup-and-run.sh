@@ -32,7 +32,7 @@ copy_scripts() {
 
 run() (
     cd "$dir"/contrib/single_file_libs/
-    hyperfine -w 1 -m 3 'python3 ccombine.py -r ../../lib/ zstd-in.c >/dev/null'
+    hyperfine -w 1 -m 3 'python3 ccombine.py -r ../../lib/ zstd-in.c >ztest3.c'
     hyperfine -w 1 -m 3 'busybox ash combine.sh -r ../../lib/ -o ztest1.c zstd-in.c'
     hyperfine -w 1 -m 3 'sh combine.sh -r ../../lib/ -o ztest2.c zstd-in.c'
     rm -- ztest?.c
