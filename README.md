@@ -34,5 +34,5 @@ often rebased and force-pushed.
 [sfl]: https://github.com/nothings/stb#why-single-file-headers
 [je]: https://jvns.ca/blog/2019/10/28/sqlite-is-really-easy-to-compile/
 [csh]: https://github.com/facebook/zstd/blob/69b8361b0c92b0f2cc145eea17b7ff930166ea9d/contrib/single_file_libs/combine.sh
-[ccom]: https://github.com/a-vrma/ccombine/raw/master/source/ccombine.py
+[ccom]: https://github.com/averms/ccombine/raw/master/source/ccombine.py
 [bnh]: benchmark/README.md
