@@ -9,11 +9,11 @@ Benchmarking against the Zstd 1.4.8 source code, I got these results:
 
 | Script and method             | Time in seconds |
 |-------------------------------|-----------------|
-| `combine.sh` with Bash        | 189 seconds     |
-| `combine.sh` with busybox ash | 31 seconds      |
-| `ccombine.py` with Python 3.9 | 1.4 seconds     |
+| `combine.sh` with Bash        | 189             |
+| `combine.sh` with busybox ash | 31              |
+| `ccombine.py` with Python 3.9 | 1.4             |
 
-In other words, `ccombine.py` is 135 times as fast as the original
+In other words, `ccombine.py` is 135 times faster than the original
 `combine.sh`.
 
 You can try to reproduce these results by running `./setup-and-run.sh`. It

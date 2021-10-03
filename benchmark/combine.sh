@@ -1,5 +1,4 @@
-#!/bin/sh
-set -e
+#!/bin/sh -e
 
 # Tool to bundle multiple C/C++ source files, inlining any includes.
 # 
@@ -91,7 +90,7 @@ resolve_include() {
         return 0
       fi
       relpath="$(realpath "$root/$inc" 2>/dev/null)"
-      if [ $? -eq 0 ]; then # not all distros have realpath...
+      if [ $? -eq 0 ]; then # not all OSes have realpath...
         echo "$relpath"
         return 0
       fi
