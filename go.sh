@@ -1,10 +1,10 @@
 #!/bin/bash
-set -euo pipefail
+set -eu
 shopt -s inherit_errexit
 
 lint() {
     flake8 source/ccombine.py
-    mypy --strict source/ccombine.py
+    mypy source/ccombine.py
 }
 
 tar() {
