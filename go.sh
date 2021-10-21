@@ -7,8 +7,8 @@ lint() {
     mypy source/ccombine.py
 }
 
-tar() {
-    local version="$(git describe --always --abbrev=20)"
+dist() {
+    local version="$(git describe --always --abbrev=16)"
     if [[ -z $version ]]; then
         return 1
     fi
