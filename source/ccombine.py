@@ -32,7 +32,7 @@ class Options:
     include_pragma_once: bool = False
 
 
-def main(arguments: List[str] = sys.argv[1:]) -> None:
+def main(arguments: List[str]) -> None:
     parser = ap.ArgumentParser(
         description=(
             "Processes a C/C++ source file, recursively inlining any local includes."
@@ -167,4 +167,4 @@ def warn(msg: Any) -> None:
 
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv[1:])
