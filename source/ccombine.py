@@ -79,7 +79,7 @@ def main(arguments: List[str] = sys.argv[1:]) -> None:
         "-V",
         "--version",
         action="version",
-        version="%(prog)s " + __version__,
+        version="ccombine " + __version__,
         help="Show program's version number and exit.",
     )
 
