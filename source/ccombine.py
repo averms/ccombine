@@ -20,7 +20,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Iterable, List, Set
 
-__version__ = "0.1.2"
+__version__ = "0.2.0"
 
 
 @dataclass
