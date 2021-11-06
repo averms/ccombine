@@ -1,20 +1,5 @@
 # ccombine
 
-```
-                          _______________________________
-                        ( Single file libraries are good. )
-                          -------------------------------
-   _____                O
-  /     \            o
-  vvvvvvv  /|__/| o
-     I   /O,O   |
-     I /_____   |      /|/|
-    E|/^ ^ ^ \  |    /00  |    _//|
-     |^ ^ ^ ^ |W|   |/^^\ |   /oo |
-      \m___m__|_|    \m_m_|   \mm_|
-                  --- Duke Lee
-```
-
 `ccombine` is based on a script in the Zstd source called [`combine.sh`][csh].
 I rewrote it in Python because the original is very slow (see
 [the benchmark][bnh]). The only change is a better command-line interface.
