@@ -101,7 +101,7 @@ def process(opts: Options) -> None:
 
 def process_file(file: Path, already_included: Set[Path], opts: Options) -> None:
     if not file.is_file():
-        sys.exit(f"ERROR: '{file}' is not a file.")
+        sys.exit(f"ccombine: '{file}' is not a file.")
 
     with file.open("r", encoding="utf-8", newline=None) as f:
         for line in f:
@@ -129,7 +129,7 @@ def process_line(
     inc = match_inc.group(1)
     if inc in opts.exclude:
         print(f"#error Using excluded file {inc}")
-        warn(f"Using excluded file {inc}. #error directive inserted.")
+        log(f"Using excluded file {inc}. #error directive inserted.")
         return
 
     resolved_inc = resolve_include((working_dir, *opts.root), inc)
@@ -159,11 +159,7 @@ def resolve_include(dirs: Iterable[Path], filename: str) -> Path:
 
 
 def log(msg: Any) -> None:
-    print("INFO:", msg, file=sys.stderr)
-
-
-def warn(msg: Any) -> None:
-    print("WARNING:", msg, file=sys.stderr)
+    print("ccombine:", msg, file=sys.stderr)
 
 
 if __name__ == "__main__":
