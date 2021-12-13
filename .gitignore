@@ -1,7 +1,7 @@
 /.vscode/
 /venv/
 
-/benchmark/*.tar.zst
+/benchmark/*.tar.gz
 /benchmark/zstd-*
 
 __pycache__/

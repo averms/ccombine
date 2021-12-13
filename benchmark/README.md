@@ -19,6 +19,6 @@ In other words, `ccombine.py` is 135 times faster than the original
 You can try to reproduce these results by running `./setup-and-run.sh`. It
 requires
 
-- `curl` or `aria2`
-- GNU tar or libarchive tar
+- `curl`
+- `tar`
 - `hyperfine`

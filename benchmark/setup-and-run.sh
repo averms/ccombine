@@ -2,10 +2,10 @@
 set -euo pipefail
 shopt -s inherit_errexit
 
-version=1.4.8
-dir="zstd-${version}"
-tarball="${dir}.tar.zst"
-url="https://github.com/facebook/zstd/releases/download/v${version}/${tarball}"
+version=1.5.0
+dir="zstd-$version"
+tarball="v$version.tar.gz"
+url="https://github.com/facebook/zstd/archive/refs/tags/v$version.tar.gz"
 
 log() {
     printf '%s\n' "$*"
@@ -13,11 +13,7 @@ log() {
 
 download_tar() {
     log "Downloading tarball to $tarball"
-    if command -v aria2c >/dev/null; then
-        aria2c -q "$url"
-    else
-        curl -fLO "$url"
-    fi
+    curl -fRLO "$url"
 }
 
 extract_tar() {
@@ -26,15 +22,15 @@ extract_tar() {
 }
 
 copy_scripts() {
-    cp combine.sh "$dir"/contrib/single_file_libs/
-    cp ../source/ccombine.py "$dir"/contrib/single_file_libs/
+    cp combine.sh "$dir"/build/single_file_libs/
+    cp ../source/ccombine.py "$dir"/build/single_file_libs/
 }
 
 run() (
-    cd "$dir"/contrib/single_file_libs/
-    hyperfine -w 1 -m 3 'python3 ccombine.py -r ../../lib/ zstd-in.c >ztest3.c'
-    hyperfine -w 1 -m 3 'busybox ash combine.sh -r ../../lib/ -o ztest1.c zstd-in.c'
-    hyperfine -w 1 -m 3 'sh combine.sh -r ../../lib/ -o ztest2.c zstd-in.c'
+    cd "$dir"/build/single_file_libs/
+    hyperfine -w 1 -m 3 'python3 ccombine.py -r ../../lib/ zstd-in.c >ztest1.c'
+    hyperfine -w 1 -m 3 'busybox ash -e combine.sh -r ../../lib/ -o ztest2.c zstd-in.c'
+    hyperfine -w 1 -m 3 'sh -e combine.sh -r ../../lib/ -o ztest3.c zstd-in.c'
     rm -- ztest?.c
 )
 
